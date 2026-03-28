@@ -73,6 +73,11 @@ public class NumberModel
         ApplyValues(newA, newB, newC);
     }
 
+    public void Reset()
+    {
+        ApplyValues(20, 50, 80);
+    }
+
     private int Clamp(int value)
     {
         if (value < MinValue)

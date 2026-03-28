@@ -1,5 +1,6 @@
 using System;
 using Avalonia.Controls;
+using Avalonia.Interactivity;
 
 namespace Lab3Part2_MVC;
 
@@ -86,7 +87,7 @@ public partial class MainWindow : Window
         isUpdating = false;
     }
 
-    private void OnATextBoxLostFocus(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private void OnATextBoxLostFocus(object? sender, RoutedEventArgs e)
     {
         if (isUpdating) return;
 
@@ -104,7 +105,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void OnBTextBoxLostFocus(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private void OnBTextBoxLostFocus(object? sender, RoutedEventArgs e)
     {
         if (isUpdating) return;
 
@@ -123,7 +124,7 @@ public partial class MainWindow : Window
         }
     }
 
-    private void OnCTextBoxLostFocus(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    private void OnCTextBoxLostFocus(object? sender, RoutedEventArgs e)
     {
         if (isUpdating) return;
 
@@ -192,6 +193,18 @@ public partial class MainWindow : Window
         if (slider == null) return;
 
         model.SetC((int)Math.Round(slider.Value));
+    }
+
+    private void OnResetClick(object? sender, RoutedEventArgs e)
+    {
+        model.Reset();
+        UpdateStatus("Статус: значения сброшены");
+    }
+
+    private void OnSaveClick(object? sender, RoutedEventArgs e)
+    {
+        model.Save();
+        UpdateStatus("Статус: значения сохранены");
     }
 
     private void UpdateStatus(string text)
