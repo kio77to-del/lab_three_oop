@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 
 namespace Lab3Part2_MVC;
 
@@ -7,6 +8,8 @@ public class NumberModel
     private int a;
     private int b;
     private int c;
+
+    private readonly string filePath = "numbers.txt";
 
     public event Action? ModelChanged;
 
@@ -22,6 +25,8 @@ public class NumberModel
         a = 20;
         b = 50;
         c = 80;
+
+        Load();
     }
 
     public void SetA(int value)
@@ -88,6 +93,54 @@ public class NumberModel
         b = newB;
         c = newC;
 
+        Save();
         ModelChanged?.Invoke();
+    }
+
+    public void Load()
+    {
+        if (!File.Exists(filePath))
+            return;
+
+        try
+        {
+            string[] lines = File.ReadAllLines(filePath);
+
+            if (lines.Length < 3)
+                return;
+
+            int loadedA = Clamp(int.Parse(lines[0]));
+            int loadedB = Clamp(int.Parse(lines[1]));
+            int loadedC = Clamp(int.Parse(lines[2]));
+
+            if (loadedA > loadedB)
+                loadedB = loadedA;
+
+            if (loadedB > loadedC)
+                loadedC = loadedB;
+
+            a = loadedA;
+            b = loadedB;
+            c = loadedC;
+        }
+        catch
+        {
+        }
+    }
+
+    public void Save()
+    {
+        try
+        {
+            File.WriteAllLines(filePath, new string[]
+            {
+                a.ToString(),
+                b.ToString(),
+                c.ToString()
+            });
+        }
+        catch
+        {
+        }
     }
 }

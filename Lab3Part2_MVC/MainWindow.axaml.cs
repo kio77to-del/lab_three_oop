@@ -17,6 +17,7 @@ public partial class MainWindow : Window
 
         BindControls();
         UpdateFromModel();
+        UpdateStatus("Статус: значения загружены из модели");
     }
 
     private void BindControls()
