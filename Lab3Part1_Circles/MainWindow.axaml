@@ -1,9 +1,31 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Lab3Part1_Circles.MainWindow"
-        Title="Lab3Part1_Circles">
-    Welcome to Avalonia!
+<Window
+    x:Class="Lab3Part1_Circles.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Lab3Part1_Circles"
+    Title="Лабораторная 3 - Часть 1"
+    Width="1000"
+    Height="700"
+    KeyDown="OnKeyDown">
+
+    <Grid RowDefinitions="Auto,*">
+        <Border Background="LightGray" Padding="10">
+            <TextBlock
+                Text="ЛКМ по пустому месту — создать круг | ЛКМ по кругу — выделить | Ctrl + ЛКМ — множественное выделение | Delete — удалить выделенные"
+                FontSize="16"
+                TextWrapping="Wrap"/>
+        </Border>
+
+        <Border
+            Grid.Row="1"
+            Margin="10"
+            Background="White"
+            BorderBrush="Black"
+            BorderThickness="1">
+
+            <local:DrawingArea
+                x:Name="DrawArea"
+                PointerPressed="OnPointerPressed"/>
+        </Border>
+    </Grid>
 </Window>
