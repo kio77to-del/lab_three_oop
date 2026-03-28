@@ -71,3 +71,4 @@ D:\Lab3_OOP\Lab3Part2_MVC\obj\Debug\net10.0\refint\Lab3Part2_MVC.dll
 D:\Lab3_OOP\Lab3Part2_MVC\obj\Debug\net10.0\Lab3Part2_MVC.pdb
 D:\Lab3_OOP\Lab3Part2_MVC\obj\Debug\net10.0\Lab3Part2_MVC.genruntimeconfig.cache
 D:\Lab3_OOP\Lab3Part2_MVC\obj\Debug\net10.0\ref\Lab3Part2_MVC.dll
+D:\Lab3_OOP\Lab3Part2_MVC\obj\Debug\net10.0\Lab3Part2_MVC.sourcelink.json

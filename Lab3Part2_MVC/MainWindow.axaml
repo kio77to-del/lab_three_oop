@@ -1,9 +1,196 @@
-<Window xmlns="https://github.com/avaloniaui"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
-        x:Class="Lab3Part2_MVC.MainWindow"
-        Title="Lab3Part2_MVC">
-    Welcome to Avalonia!
+<Window
+    x:Class="Lab3Part2_MVC.MainWindow"
+    xmlns="https://github.com/avaloniaui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Лабораторная работа 3 - Часть 2"
+    Width="1100"
+    Height="750"
+    MinWidth="900"
+    MinHeight="650">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,Auto" Background="#F3F3F3">
+
+            <Border
+                Margin="15,15,15,10"
+                Padding="20"
+                Background="White"
+                BorderBrush="#D0D0D0"
+                BorderThickness="1"
+                CornerRadius="8">
+                <StackPanel Spacing="10">
+                    <TextBlock
+                        Text="MVC: числа A, B, C"
+                        FontSize="28"
+                        FontWeight="Bold"/>
+
+                    <TextBlock
+                        Text="Каждое число редактируется через TextBox, NumericUpDown и Slider. Модель хранит данные, следит за ограничением A ≤ B ≤ C и уведомляет форму об изменениях."
+                        FontSize="16"
+                        TextWrapping="Wrap"/>
+                </StackPanel>
+            </Border>
+
+            <Border
+                Grid.Row="1"
+                Margin="15,0,15,10"
+                Padding="18"
+                Background="White"
+                BorderBrush="#D0D0D0"
+                BorderThickness="1"
+                CornerRadius="8">
+                <Grid ColumnDefinitions="80,140,180,*" RowDefinitions="Auto,Auto">
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="A"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        VerticalAlignment="Center"/>
+
+                    <TextBox
+                        x:Name="ATextBox"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,0,15,0"
+                        Watermark="Введите A"/>
+
+                    <NumericUpDown
+                        x:Name="ANumeric"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="0,0,15,0"
+                        Minimum="0"
+                        Maximum="100"/>
+
+                    <Slider
+                        x:Name="ASlider"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Minimum="0"
+                        Maximum="100"/>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="3"
+                        Margin="0,10,0,0"
+                        Text="Изменение A использует разрешающее поведение: модель может изменить B и C, чтобы сохранить порядок."
+                        TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Row="2"
+                Margin="15,0,15,10"
+                Padding="18"
+                Background="White"
+                BorderBrush="#D0D0D0"
+                BorderThickness="1"
+                CornerRadius="8">
+                <Grid ColumnDefinitions="80,140,180,*" RowDefinitions="Auto,Auto">
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="B"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        VerticalAlignment="Center"/>
+
+                    <TextBox
+                        x:Name="BTextBox"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,0,15,0"
+                        Watermark="Введите B"/>
+
+                    <NumericUpDown
+                        x:Name="BNumeric"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="0,0,15,0"
+                        Minimum="0"
+                        Maximum="100"/>
+
+                    <Slider
+                        x:Name="BSlider"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Minimum="0"
+                        Maximum="100"/>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="3"
+                        Margin="0,10,0,0"
+                        Text="Изменение B использует запрещающее поведение: значение принимается только если A ≤ B ≤ C."
+                        TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Row="3"
+                Margin="15,0,15,10"
+                Padding="18"
+                Background="White"
+                BorderBrush="#D0D0D0"
+                BorderThickness="1"
+                CornerRadius="8">
+                <Grid ColumnDefinitions="80,140,180,*" RowDefinitions="Auto,Auto">
+                    <TextBlock
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Text="C"
+                        FontSize="24"
+                        FontWeight="Bold"
+                        VerticalAlignment="Center"/>
+
+                    <TextBox
+                        x:Name="CTextBox"
+                        Grid.Row="0"
+                        Grid.Column="1"
+                        Margin="0,0,15,0"
+                        Watermark="Введите C"/>
+
+                    <NumericUpDown
+                        x:Name="CNumeric"
+                        Grid.Row="0"
+                        Grid.Column="2"
+                        Margin="0,0,15,0"
+                        Minimum="0"
+                        Maximum="100"/>
+
+                    <Slider
+                        x:Name="CSlider"
+                        Grid.Row="0"
+                        Grid.Column="3"
+                        Minimum="0"
+                        Maximum="100"/>
+
+                    <TextBlock
+                        Grid.Row="1"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="3"
+                        Margin="0,10,0,0"
+                        Text="Изменение C использует разрешающее поведение: модель может изменить A и B, чтобы сохранить порядок."
+                        TextWrapping="Wrap"/>
+                </Grid>
+            </Border>
+
+            <Border
+                Grid.Row="4"
+                Margin="15,0,15,15"
+                Padding="16"
+                Background="White"
+                BorderBrush="#D0D0D0"
+                BorderThickness="1"
+                CornerRadius="8">
+                <TextBlock
+                    x:Name="StatusText"
+                    Text="Статус: модель готова"
+                    FontSize="16"/>
+            </Border>
+        </Grid>
+    </ScrollViewer>
 </Window>
