@@ -3,29 +3,107 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Lab3Part1_Circles"
-    Title="Лабораторная 3 - Часть 1"
-    Width="1000"
+    Title="Лабораторная работа 3 - Часть 1"
+    Width="1100"
     Height="700"
+    MinWidth="900"
+    MinHeight="600"
     KeyDown="OnKeyDown">
 
-    <Grid RowDefinitions="Auto,*">
-        <Border Background="LightGray" Padding="10">
-            <TextBlock
-                Text="ЛКМ по пустому месту — создать круг | ЛКМ по кругу — выделить | Ctrl + ЛКМ — множественное выделение | Delete — удалить выделенные"
-                FontSize="16"
-                TextWrapping="Wrap"/>
+    <Grid ColumnDefinitions="300,*" Background="#F3F3F3">
+        <Border
+            Grid.Column="0"
+            Margin="15"
+            Padding="20"
+            Background="White"
+            BorderBrush="#D0D0D0"
+            BorderThickness="1"
+            CornerRadius="8">
+
+            <StackPanel Spacing="16">
+                <TextBlock
+                    Text="Круги на форме"
+                    FontSize="26"
+                    FontWeight="Bold"/>
+
+                <Border
+                    Padding="12"
+                    Background="#F7F7F7"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1"
+                    CornerRadius="6">
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            Text="Инструкция"
+                            FontSize="18"
+                            FontWeight="SemiBold"/>
+                        <TextBlock Text="• ЛКМ по пустому месту — создать круг" TextWrapping="Wrap"/>
+                        <TextBlock Text="• ЛКМ по кругу — выделить круг" TextWrapping="Wrap"/>
+                        <TextBlock Text="• Ctrl + ЛКМ — множественное выделение" TextWrapping="Wrap"/>
+                        <TextBlock Text="• Delete — удалить выделенные" TextWrapping="Wrap"/>
+                    </StackPanel>
+                </Border>
+
+                <Border
+                    Padding="12"
+                    Background="#F7F7F7"
+                    BorderBrush="#E0E0E0"
+                    BorderThickness="1"
+                    CornerRadius="6">
+                    <StackPanel Spacing="8">
+                        <TextBlock
+                            Text="Состояние"
+                            FontSize="18"
+                            FontWeight="SemiBold"/>
+                        <TextBlock
+                            x:Name="StatusText"
+                            Text="Кругов: 0 | Выделено: 0"
+                            FontSize="16"/>
+                    </StackPanel>
+                </Border>
+
+                <StackPanel Spacing="10">
+                    <Button
+                        Content="Удалить выделенные"
+                        Height="40"
+                        Click="OnDeleteSelectedClick"/>
+
+                    <Button
+                        Content="Очистить всё"
+                        Height="40"
+                        Click="OnClearAllClick"/>
+                </StackPanel>
+            </StackPanel>
         </Border>
 
         <Border
-            Grid.Row="1"
-            Margin="10"
+            Grid.Column="1"
+            Margin="15,15,15,15"
+            Padding="15"
             Background="White"
-            BorderBrush="Black"
-            BorderThickness="1">
+            BorderBrush="#D0D0D0"
+            BorderThickness="1"
+            CornerRadius="8">
 
-            <local:DrawingArea
-                x:Name="DrawArea"
-                PointerPressed="OnPointerPressed"/>
+            <Grid RowDefinitions="Auto,*">
+                <TextBlock
+                    Text="Рабочая область"
+                    FontSize="22"
+                    FontWeight="SemiBold"
+                    Margin="0,0,0,12"/>
+
+                <Border
+                    Grid.Row="1"
+                    Background="White"
+                    BorderBrush="Black"
+                    BorderThickness="1"
+                    CornerRadius="4">
+
+                    <local:DrawingArea
+                        x:Name="DrawArea"
+                        PointerPressed="OnPointerPressed"/>
+                </Border>
+            </Grid>
         </Border>
     </Grid>
 </Window>

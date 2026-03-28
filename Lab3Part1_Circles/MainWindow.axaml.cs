@@ -1,3 +1,4 @@
+using System.Linq;
 using Avalonia.Controls;
 using Avalonia.Input;
 
@@ -17,6 +18,7 @@ public partial class MainWindow : Window
             drawArea.Storage = storage;
         }
 
+        UpdateStatus();
         Focus();
     }
 
@@ -54,16 +56,55 @@ public partial class MainWindow : Window
         }
 
         drawArea.InvalidateVisual();
+        UpdateStatus();
     }
 
     private void OnKeyDown(object? sender, KeyEventArgs e)
     {
         if (e.Key == Key.Delete)
         {
-            storage.RemoveSelected();
-
-            var drawArea = this.FindControl<DrawingArea>("DrawArea");
-            drawArea?.InvalidateVisual();
+            DeleteSelectedCircles();
         }
+    }
+
+    private void OnDeleteSelectedClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        DeleteSelectedCircles();
+    }
+
+    private void OnClearAllClick(object? sender, Avalonia.Interactivity.RoutedEventArgs e)
+    {
+        storage = new CircleStorage();
+
+        var drawArea = this.FindControl<DrawingArea>("DrawArea");
+        if (drawArea != null)
+        {
+            drawArea.Storage = storage;
+            drawArea.InvalidateVisual();
+        }
+
+        UpdateStatus();
+    }
+
+    private void DeleteSelectedCircles()
+    {
+        storage.RemoveSelected();
+
+        var drawArea = this.FindControl<DrawingArea>("DrawArea");
+        drawArea?.InvalidateVisual();
+
+        UpdateStatus();
+    }
+
+    private void UpdateStatus()
+    {
+        var statusText = this.FindControl<TextBlock>("StatusText");
+        if (statusText == null)
+            return;
+
+        int totalCount = storage.GetAll().Count;
+        int selectedCount = storage.GetAll().Count(circle => circle.IsSelected);
+
+        statusText.Text = $"Кругов: {totalCount} | Выделено: {selectedCount}";
     }
 }
