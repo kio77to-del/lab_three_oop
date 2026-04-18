@@ -9,10 +9,6 @@ public class NumberModel
     private int b;
     private int c;
 
-    private readonly string filePath = "numbers.txt";
-
-    public event Action? ModelChanged;
-
     public int A => a;
     public int B => b;
     public int C => c;
@@ -20,12 +16,15 @@ public class NumberModel
     public int MinValue => 0;
     public int MaxValue => 100;
 
+    private const string FileName = "numbers.txt";
+
+    public event Action? ModelChanged;
+
     public NumberModel()
     {
         a = 20;
         b = 50;
         c = 80;
-
         Load();
     }
 
@@ -78,17 +77,6 @@ public class NumberModel
         ApplyValues(20, 50, 80);
     }
 
-    private int Clamp(int value)
-    {
-        if (value < MinValue)
-            return MinValue;
-
-        if (value > MaxValue)
-            return MaxValue;
-
-        return value;
-    }
-
     private void ApplyValues(int newA, int newB, int newC)
     {
         if (a == newA && b == newB && c == newC)
@@ -102,47 +90,49 @@ public class NumberModel
         ModelChanged?.Invoke();
     }
 
-    public void Load()
+    private int Clamp(int value)
     {
-        if (!File.Exists(filePath))
-            return;
-
-        try
-        {
-            string[] lines = File.ReadAllLines(filePath);
-
-            if (lines.Length < 3)
-                return;
-
-            int loadedA = Clamp(int.Parse(lines[0]));
-            int loadedB = Clamp(int.Parse(lines[1]));
-            int loadedC = Clamp(int.Parse(lines[2]));
-
-            if (loadedA > loadedB)
-                loadedB = loadedA;
-
-            if (loadedB > loadedC)
-                loadedC = loadedB;
-
-            a = loadedA;
-            b = loadedB;
-            c = loadedC;
-        }
-        catch
-        {
-        }
+        if (value < MinValue) return MinValue;
+        if (value > MaxValue) return MaxValue;
+        return value;
     }
 
     public void Save()
     {
+        File.WriteAllLines(FileName, new string[]
+        {
+            a.ToString(),
+            c.ToString()
+        });
+    }
+
+    public void Load()
+    {
+        if (!File.Exists(FileName))
+            return;
+
         try
         {
-            File.WriteAllLines(filePath, new string[]
+            var lines = File.ReadAllLines(FileName);
+
+            if (lines.Length >= 2)
             {
-                a.ToString(),
-                b.ToString(),
-                c.ToString()
-            });
+                int loadedA = Clamp(int.Parse(lines[0]));
+                int loadedC = Clamp(int.Parse(lines[1]));
+
+                if (loadedA > loadedC)
+                {
+                    int temp = loadedA;
+                    loadedA = loadedC;
+                    loadedC = temp;
+                }
+
+                int loadedB = loadedA;
+
+                a = loadedA;
+                b = loadedB;
+                c = loadedC;
+            }
         }
         catch
         {

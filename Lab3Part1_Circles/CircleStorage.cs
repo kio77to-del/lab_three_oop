@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Lab3Part1_Circles;
 
@@ -40,5 +41,20 @@ public class CircleStorage
         }
 
         return null;
+    }
+
+    public List<CCircle> FindAllCirclesAt(double x, double y)
+    {
+        List<CCircle> result = new List<CCircle>();
+
+        for (int i = circles.Count - 1; i >= 0; i--)
+        {
+            if (circles[i].ContainsPoint(x, y))
+            {
+                result.Add(circles[i]);
+            }
+        }
+
+        return result;
     }
 }

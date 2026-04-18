@@ -1369,26 +1369,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\vagit\\.nuget\\packages\\": {}
+    "/Users/askar/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Lab3_OOP\\Lab3Part1_Circles\\Lab3Part1_Circles.csproj",
+      "projectUniqueName": "/Users/askar/lab_three_oop/Lab3Part1_Circles/Lab3Part1_Circles.csproj",
       "projectName": "Lab3Part1_Circles",
-      "projectPath": "D:\\Lab3_OOP\\Lab3Part1_Circles\\Lab3Part1_Circles.csproj",
-      "packagesPath": "C:\\Users\\vagit\\.nuget\\packages\\",
-      "outputPath": "D:\\Lab3_OOP\\Lab3Part1_Circles\\obj\\",
+      "projectPath": "/Users/askar/lab_three_oop/Lab3Part1_Circles/Lab3Part1_Circles.csproj",
+      "packagesPath": "/Users/askar/.nuget/packages/",
+      "outputPath": "/Users/askar/lab_three_oop/Lab3Part1_Circles/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\vagit\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/Users/askar/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net10.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1407,7 +1405,7 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.200"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net10.0": {
@@ -1450,7 +1448,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/10.0.103/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.CSharp": "(,4.7.32767]",
           "Microsoft.VisualBasic": "(,10.4.32767]",
